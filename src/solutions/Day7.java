@@ -36,12 +36,12 @@ public class Day7 {
 		if(crabPositions == null) {
 			parseData();
 		}
-		mostFuelEfficientPosition = highestPosition*crabPositions.length;
-		leastTotalFuelSpent = highestPosition*crabPositions.length;
+		mostFuelEfficientPosition = 2147483647;
+		leastTotalFuelSpent = 2147483647;
 	}
 	
 	private static int getFuelSpent1to1() {
-		int bestTotalFuelSpent = highestPosition*crabPositions.length;
+		int bestTotalFuelSpent = 2147483647;
 		for(int i = 0; i < highestPosition; i++) {
 			int totalFuelSpent = 0;
 			for(int j = 0; j < crabPositions.length; j++) {
@@ -62,9 +62,7 @@ public class Day7 {
 			int totalFuelSpent = 0;
 			for(int j = 0; j < crabPositions.length; j++) {
 				int fuelSpent = Math.abs(i - crabPositions[j]);
-				for(int k = 0; k < fuelSpent; k++) {
-					totalFuelSpent += k+1;
-				}
+				totalFuelSpent += (fuelSpent*(fuelSpent+1))/2;
 			}
 			if(totalFuelSpent < bestTotalFuelSpent) {
 				bestTotalFuelSpent = totalFuelSpent;
